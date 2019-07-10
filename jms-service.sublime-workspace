@@ -1,0 +1,655 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"list-grou",
+				"list-group-item"
+			],
+			[
+				"is",
+				"is_free"
+			],
+			[
+				"submit",
+				"submit-grad"
+			],
+			[
+				"user_",
+				"user_id"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"employee",
+				"employee_id"
+			],
+			[
+				"mysqli_fet",
+				"mysqli_fetch_assoc"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"bold",
+				"bold\tfont-weight"
+			],
+			[
+				"align",
+				"align-content\tproperty"
+			],
+			[
+				"colu",
+				"column-width\tproperty"
+			],
+			[
+				"creat",
+				"createform"
+			],
+			[
+				"crea",
+				"create_form"
+			],
+			[
+				"create",
+				"createElement"
+			],
+			[
+				"mysqli",
+				"mysqli_query"
+			],
+			[
+				"descri",
+				"description_err"
+			],
+			[
+				"howlong",
+				"howlong_err"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "style.css",
+			"settings":
+			{
+				"buffer_size": 1617,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "syst-admin/update-info.php",
+			"settings":
+			{
+				"buffer_size": 561,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "syst-admin/newuser.php",
+			"settings":
+			{
+				"buffer_size": 363,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "syst-admin/index.php",
+			"settings":
+			{
+				"buffer_size": 3617,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "includes/login.inc.php",
+			"settings":
+			{
+				"buffer_size": 1742,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "syst-admin/header.php",
+			"settings":
+			{
+				"buffer_size": 1406,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "syst-admin/style.css",
+			"settings":
+			{
+				"buffer_size": 23,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"Package Control: Install Package ",
+			"help",
+			"ls",
+			"cd ..",
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/xampp/htdocs/service-system",
+		"/D/xampp/htdocs/service-system/includes",
+		"/D/xampp/htdocs/service-system/superuser",
+		"/D/xampp/htdocs/service-system/syst-admin"
+	],
+	"file_history":
+	[
+		"/D/xampp/htdocs/service-system/syst-admin/header.php",
+		"/D/xampp/htdocs/service-system/index.php",
+		"/D/xampp/htdocs/service-system/syst-admin/footer.php",
+		"/C/Users/reese/personal-projects/rjones.dev/public_html/index.html",
+		"/D/xampp/htdocs/rjones.dev/index.html",
+		"/D/xampp/htdocs/service-system/database.sql",
+		"/D/xampp/htdocs/service-system/includes/login.inc.php",
+		"/D/xampp/htdocs/service-system/includes/logout.inc.php",
+		"/D/xampp/htdocs/johnson-marine/header.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1771972_3_8/index.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1771972_3_4/database.sql",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1771972_3_7/header.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1771972_3_6/index.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1771972_3_5/index.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1771972_3_1/db-reset.inc.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1771972_3_2/database.sql",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1771972_3_3/login.inc.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1771972_3_0/database.sql",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1052406_2_0/findbranch.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/2691248_2_0/JDBCConExample.java",
+		"/C/Users/reese/Desktop/GIT/lab10-memory-allocation-biggest-chungus-1/memalloc.c",
+		"/C/Users/reese/Desktop/GIT/fifteen/Reese/banwebpp/utilities/banner.sql",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/7015354_2_1/index.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/199172_2_2/queries.txt",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/199172_2_1/queries.txt",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/461668_3_1/queries.txt",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/199172_2_0/queries.txt",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/461668_3_0/queries.txt",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/134306_2_3/index.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/134306_2_2/style.css",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/134306_2_0/index.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/134306_2_1/header.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1507918_2_0/graduate.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1507918_2_3/del_submit.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/5507366_2_0/graduate.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/985496_2_0/students.json",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/526960_2_1/faculty.json",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/1248244_3_0/graduate.php",
+		"/C/Users/reese/Desktop/GIT/hw04-reesealanj/skeleton/Makefile",
+		"/C/Users/reese/Desktop/GIT/hw04-reesealanj/skeleton/main.c",
+		"/C/Users/reese/Desktop/GIT/hw04-reesealanj/skeleton/test-stack.c",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/590444_2_0/index.php",
+		"/C/Users/reese/Desktop/GIT/hw04-reesealanj/main.c",
+		"/C/Users/reese/Desktop/GIT/hw04-reesealanj/Makefile",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_22/users.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_21/footer.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_19/header.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_18/header.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_17/transcript.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_15/transcript.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_11/style.css",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_13/header.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_9/advisees.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_10/header.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_4/students.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_7/students.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_6/banner.sql",
+		"/D/xampp/htdocs/banwebpp/student/update.php",
+		"/C/Users/reese/Documents/MobaXterm/slash/RemoteFiles/3081974_2_3/view-stu.php",
+		"/D/xampp/htdocs/banwebpp/faculty/show_stu.inc",
+		"/D/xampp/htdocs/banwebpp/faculty/show_user.inc.php",
+		"/D/xampp/htdocs/banwebpp/faculty/new_user.inc.php",
+		"/D/xampp/htdocs/banwebpp/faculty/fac-update.inc.php",
+		"/D/xampp/htdocs/banwebpp/faculty/view/stu-admin.view.php",
+		"/D/xampp/htdocs/banwebpp/alumni/footer.php",
+		"/D/xampp/htdocs/banwebpp/alumni/index.php",
+		"/D/xampp/htdocs/banwebpp/faculty/students.php",
+		"/D/xampp/htdocs/banwebpp/alumni/transcript.php",
+		"/D/xampp/htdocs/banwebpp/alumni/header.php",
+		"/D/xampp/htdocs/banwebpp/bannerpp.sql",
+		"/D/xampp/htdocs/banwebpp/alumni/alumni.css",
+		"/D/xampp/htdocs/banwebpp/student/header.php",
+		"/D/xampp/htdocs/banwebpp/student-login.php",
+		"/D/xampp/htdocs/banwebpp/faculty-login.php",
+		"/D/xampp/htdocs/banwebpp/alumni-login.php",
+		"/D/xampp/htdocs/banwebpp/student/transcript.php",
+		"/D/xampp/htdocs/banwebpp/student/graduate.php",
+		"/D/xampp/htdocs/banwebpp/student/form1.php",
+		"/D/xampp/htdocs/banwebpp/student/index.php",
+		"/D/xampp/htdocs/loginsystem/includes/logout.inc.php",
+		"/D/xampp/htdocs/banwebpp/includes/alum-log.inc.php",
+		"/D/xampp/htdocs/banwebpp/includes/fac-log.inc.php",
+		"/D/xampp/htdocs/banwebpp/admin/index.php",
+		"/D/xampp/htdocs/banwebpp/includes/stu-log.inc.php",
+		"/D/xampp/htdocs/banwebpp/index.php",
+		"/C/Users/reese/Desktop/loginsystem/header.php",
+		"/C/Users/reese/Desktop/loginsystem/index.php",
+		"/C/Users/reese/Desktop/loginsystem/signup.php",
+		"/C/Users/reese/Desktop/loginsystem/style.css",
+		"/D/xampp/htdocs/index.php",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/css/main.css",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/index.php",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/reesealanj_store_schema.sql",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/index.html",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/README.md",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/tke/52539bfbb16f2372ff8d6a94c3f28bc70c575650/updates/index.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/_layouts/about.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/_layouts/tke.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/_layouts/default.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/css/tke.css",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/tke/52539bfbb16f2372ff8d6a94c3f28bc70c575650/css/tke.css",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/tke/52539bfbb16f2372ff8d6a94c3f28bc70c575650/index.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/tke/index.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/about/index.html",
+		"/C/Users/reese/Downloads/tke_coa_gHL_icon.ico",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw6-reesealanj/reesealanj_hw_SQL_solution.sql",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/tke/tke-member-area.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/css/about.css",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/_posts/2019-02-15-additional-content.md",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/_posts/2019-02-13-website-launched.md",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/index1.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/projects/new-member-ed.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/index.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/projects/indexq.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/js/contact.js",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/css/form.css",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/projects/index.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/_updates/2019-02-14-TKE-Updates.md",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/blog/index.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/_layouts/post.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/cv/index.html",
+		"/C/Users/reese/Desktop/seen_fang.php",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/_config.yml",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/.gitignore",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/blog/blog.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/css/main.css",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/projects.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/cv.html"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"6",
+			"mr",
+			")){\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1614,
+								1614
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1299.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "syst-admin/update-info.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5,
+								5
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "syst-admin/newuser.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 363,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								64,
+								64
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "syst-admin/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								874,
+								874
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "includes/login.inc.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								829,
+								829
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "syst-admin/header.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1406,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1380,
+								1380
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "syst-admin/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								23
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 51.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "jms-service.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 223.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

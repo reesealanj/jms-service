@@ -1,0 +1,30 @@
+For Users: 
+	-Roles:
+		0) System Administrator
+		1) Superuser
+			-Superuser can see most (if not all) information, but can not make changes to anything or open service tickets.
+		2) Service Employee
+		3) Sales Employee
+		4) Customer
+
+For Services:
+	-Status:
+		0)Ticket Open - No Action
+		1)Service In Progress
+		2)Service Paused - Waiting For Parts
+		3)Service Paused - Waiting For Callback
+		4)Service Completed - Customer Not Contacted
+		5)Service Completed - Customer Contacted
+		6)Ticket Closed - Customer Recieved Boat
+
+		7)Rigging Request - Open
+		8)Request Completed - Closed 
+		9)Request Completed with Comment - Closed
+		10)Request not Completed - Closed
+
+For TicketLines:
+	-Item Type:
+		0)Labor or manual Work
+		1)Parts
+
+Admin Hash: $2y$10$nTpnDqCqmV2tMjJ9ud2pf.RfwYZo55enA6iZefQtBnQ6bhX8LO2pu
