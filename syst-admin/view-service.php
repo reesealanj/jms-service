@@ -110,7 +110,7 @@
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 					<?php
-						if($boat == 0){
+						if($boat == NULL || $boat == 0){
 							echo "<li class='list-group-item'><a href='add-boat.php?id=".$service_row['serviceid']."' class='btn btn-success' role='button'>Add Boat</a></li>";
 						}
 						else{
@@ -128,9 +128,9 @@
 							" . $boat_row['model'] . "
 							</li>
 							<li class='list-group-item'>
-								<a href='view-boat.php?id= 
-							" . $boat_row['boatid'] . "
+								<a href='view-boat.php?id=" . $boat_row['boatid'] . "
 							' class='btn btn-info' role='button'>View</a>
+								<a href='remove-boat.php?id=" . $boat_row['boatid'] . "' class='btn btn-danger' role='button'>Remove</a>
 							</li>
 							";
 
@@ -260,4 +260,3 @@
 <?php
 	require "footer.php";
 ?>
-
