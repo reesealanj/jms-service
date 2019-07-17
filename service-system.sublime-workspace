@@ -92,37 +92,29 @@
 	"buffers":
 	[
 		{
+			"file": "syst-admin/view-trailer.php",
+			"settings":
+			{
+				"buffer_size": 3116,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "<?php"
+			}
+		},
+		{
 			"file": "syst-admin/view-service.php",
 			"settings":
 			{
-				"buffer_size": 8111,
+				"buffer_size": 9848,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "syst-admin/add-engine.php",
+			"file": "syst-admin/view-motor.php",
 			"settings":
 			{
-				"buffer_size": 5310,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "syst-admin/users.php",
-			"settings":
-			{
-				"buffer_size": 5862,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "index.php",
-			"settings":
-			{
-				"buffer_size": 3123,
+				"buffer_size": 1733,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -184,10 +176,16 @@
 	],
 	"file_history":
 	[
+		"/D/xampp/htdocs/service-system/syst-admin/remove-engine.php",
+		"/D/xampp/htdocs/service-system/syst-admin/add-engine.php",
+		"/D/xampp/htdocs/service-system/syst-admin/view-service.php",
+		"/D/xampp/htdocs/service-system/syst-admin/remove-trailer.php",
+		"/D/xampp/htdocs/service-system/index.php",
+		"/D/xampp/htdocs/service-system/syst-admin/users.php",
+		"/D/xampp/htdocs/service-system/syst-admin/remove-boat.php",
 		"/D/xampp/htdocs/service-system/syst-admin/services.php",
 		"/D/xampp/htdocs/service-system/syst-admin/test.php",
 		"/D/xampp/htdocs/service-system/syst-admin/service-history.php",
-		"/D/xampp/htdocs/service-system/syst-admin/view-service.php",
 		"/D/xampp/htdocs/service-system/syst-admin/edit-user.php",
 		"/D/xampp/htdocs/service-system/syst-admin/newuser.php",
 		"/D/xampp/htdocs/service-system/syst-admin/delete-submit.php",
@@ -196,7 +194,6 @@
 		"/D/xampp/htdocs/service-system/syst-admin/index.php",
 		"/D/xampp/htdocs/service-system/includes/login.inc.php",
 		"/D/xampp/htdocs/service-system/includes/register.inc.php",
-		"/D/xampp/htdocs/service-system/index.php",
 		"/D/xampp/htdocs/service-system/register.inc.php",
 		"/D/xampp/htdocs/service-system/syst-admin/footer.php",
 		"/C/Users/reese/personal-projects/rjones.dev/public_html/index.html",
@@ -306,12 +303,7 @@
 		"/C/Users/reese/personal-projects/reesealanj.github.io/_posts/2019-02-15-additional-content.md",
 		"/C/Users/reese/personal-projects/reesealanj.github.io/_posts/2019-02-13-website-launched.md",
 		"/C/Users/reese/personal-projects/reesealanj.github.io/index1.html",
-		"/C/Users/reese/personal-projects/reesealanj.github.io/projects/new-member-ed.html",
-		"/C/Users/reese/personal-projects/reesealanj.github.io/index.html",
-		"/C/Users/reese/personal-projects/reesealanj.github.io/projects/indexq.html",
-		"/C/Users/reese/personal-projects/reesealanj.github.io/js/contact.js",
-		"/C/Users/reese/personal-projects/reesealanj.github.io/css/form.css",
-		"/C/Users/reese/personal-projects/reesealanj.github.io/projects/index.html"
+		"/C/Users/reese/personal-projects/reesealanj.github.io/projects/new-member-ed.html"
 	],
 	"find":
 	{
@@ -352,33 +344,33 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "syst-admin/view-service.php",
+					"file": "syst-admin/view-trailer.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8111,
+						"buffer_size": 3116,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								294,
-								295
+								3116,
+								3116
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"auto_name": "<?php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2025.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -386,19 +378,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "syst-admin/add-engine.php",
+					"file": "syst-admin/view-service.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5310,
+						"buffer_size": 9848,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5181,
-								5181
+								5868,
+								5868
 							]
 						],
 						"settings":
@@ -407,68 +399,38 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3969.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "syst-admin/users.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5862,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5136,
-								5136
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2160.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "index.php",
+					"buffer": 2,
+					"file": "syst-admin/view-motor.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3123,
+						"buffer_size": 1733,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2463,
-								2463
+								733,
+								733
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

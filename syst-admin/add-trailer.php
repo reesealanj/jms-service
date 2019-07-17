@@ -68,47 +68,39 @@
 			</div>
 		</div>
 	</div>
-	<!-- Add Engine Card -->
+	<!-- Add Trailer Information -->
 	<div class="row">
 		<div class="col col-12 mt-2">
 			<div class="card my-1">
 				<div class="card-header">
-					<h2>Add Engine to Ticket</h2>
+					<h2>Add Trailer to Ticket</h2>
 				</div>
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 						<form action="" method="post">
 							<div class="form-row">
-								<div class="form-group col-md-6">
+								<div class="form-group col-6">
 									<label for="make">Make</label>
 									<input type="text" class="form-control" name="make" placeholder="Make">
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-6">
 									<label for="model">Model</label>
 									<input type="text" class="form-control" name="model" placeholder="Model">
 								</div>
 							</div>
 							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="vin">Vin</label>
-									<input type="text" class="form-control" name="vin" placeholder="Vin">
-								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-6">
 									<label for="year">Year</label>
 									<input type="text" class="form-control" name="year" placeholder="0000">
 								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-4">
-									<label for="modelno">Model Number</label>
-									<input type="text" class="form-control" name="modelno" placeholder="Model Number">
+								<div class="form-group col-6">
+									<label for="vin">VIN</label>
+									<input type="text" class="form-control" name="vin" placeholder="VIN">
 								</div>
 							</div>
 							<div class="form-row justify-content-center">
 								<div class="form-group">
-									<button class="btn btn-success btn-lg" type="submit" name="engine-submit">
-										Add Engine
-									</button>
+									<button class="btn btn-success btn-lg" type="submit" name="trailer-submit">Add Trailer</button>
 								</div>
 							</div>
 						</form>
@@ -124,54 +116,29 @@
 	</div>
 </div>
 <?php
-	if(isset($_POST['engine-submit'])){
+	if(isset($_POST['trailer-submit'])){
 		$service = $_GET['id'];
 		$query = "SELECT * FROM services WHERE serviceid=" . $service;
 		$run = mysqli_query($conn, $query);
 		$service_row = mysqli_fetch_assoc($run);
 
 		$customer = $service_row['customer'];
+
 		$make = $_POST['make'];
 		$model = $_POST['model'];
 		$year = $_POST['year'];
-
 		$vin = $_POST['vin'];
-		$modelno = $_POST['modelno'];
 
-		$insert = "INSERT INTO motors (customer, make, model, year, vin, modelno) VALUES (". $customer . ",'" . $make . "','" . $model . "'," . $year . ",'" . $vin . "','" . $modelno  . "')";
+		$insert = "INSERT INTO trailers (customer, make, model, year, vin) VALUES ({$customer}, '{$make}', '{$model}', {$year}, '{$vin}')";
 		$run = mysqli_query($conn, $insert);
-		$select = "SELECT * FROM motors WHERE vin='" . $vin . "'";
-		$run_select = mysqli_query($conn, $select);
-		$row = mysqli_fetch_assoc($run_select);
 
-		$select_service = "SELECT * FROM services WHERE serviceid=" . $service;
-		$run = mysqli_query($conn, $select_service);
-		$service_row = mysqli_fetch_assoc($run);
+		$select = "SELECT * FROM trailers WHERE vin='" . $vin . "'";
+		$run = mysqli_query($conn, $select);
+		$row = mysqli_fetch_assoc($run);
 
-			$engines = 0;
-			if(($service_row['engine1'] != NULL) && ($service_row['engine1'] != 0)){
-				$engines++;
-			}
-			if(($service_row['engine2'] != NULL) && ($service_row['engine2'] != 0)){
-				$engines++;
-			}
-			if(($service_row['engine3'] != NULL) && ($service_row['engine3'] != 0)){
-				$engines++;
-			}
-
-			if($engines == 0){
-				$update = "UPDATE services SET engine1=" . $row['motorid'] . " WHERE serviceid=" . $service_row['serviceid'];
-				$run_update = mysqli_query($conn, $update);
-			}
-			else if($engines == 1){
-				$update = "UPDATE services SET engine2=" . $row['motorid'] . " WHERE serviceid=" . $service_row['serviceid'];
-				$run_update = mysqli_query($conn, $update);
-			}
-			else if($engines == 2){
-				$update = "UPDATE services SET engine3=" . $row['motorid'] . " WHERE serviceid=" . $service_row['serviceid'];
-				$run_update = mysqli_query($conn, $update);
-			}
-
+		$update = "UPDATE services SET trailerid=" . $row['trailerid'] . " WHERE serviceid=" . $service;
+		$run_update = mysqli_query($conn, $update);
 	}
+
 	require "footer.php";
 ?>

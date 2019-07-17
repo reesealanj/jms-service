@@ -75,7 +75,7 @@
 								$status_word = "Service Paused - Waiting For Callback";
 							}
 							else if($status_num == 4){
-								$status_word = "Service Completed - Customer Contacted";
+								$status_word = "Service Completed - Customer Not Contacted";
 							}
 							else if($status_num == 5){
 								$status_word = "Service Completed - Customer Contacted";

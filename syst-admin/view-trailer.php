@@ -2,27 +2,30 @@
 	require "header.php";
 
 	if(!isset($_GET['id'])){
-		header("Location: services.php?error=nbc");
+		header("Location: services.php?error=ntc");
 	}
 	else{
-		$boat = $_GET['id'];
-		$query = "SELECT * FROM boats WHERE boatid=" . $boat;
+		$service = $_GET['id'];
+		$query = "SELECT * FROM services WHERE serviceid=" . $service;
 		$run = mysqli_query($conn, $query);
 
 		if(mysqli_num_rows($run) < 1){
-			header("Location: services.php?error=bne");
+			header("Location: services.php?error=tne");
 		}
 
-		$boat_row = mysqli_fetch_assoc($run);
-		$customer = $boat_row['customer'];
+		$service_row = mysqli_fetch_assoc($run);
+
+		$trailer = $service_row['trailerid'];
+		$customer = $service_row['customer'];
+
 		$query = "SELECT * FROM users WHERE userid=" . $customer;
 		$run = mysqli_query($conn, $query);
 		$customer_row = mysqli_fetch_assoc($run);
 
-		$query = "SELECT * FROM services WHERE boatid=" . $boat . " AND customer="  . $customer;
+		$query = "SELECT * FROM trailers WHERE trailerid=" . $trailer;
 		$run = mysqli_query($conn, $query);
-		$service_row = mysqli_fetch_assoc($run);
-		$service = $service_row['serviceid'];
+		$trailer_row = mysqli_fetch_assoc($run);
+
 		$status_num = $service_row['status'];
 		$status_word = ""; 
 
@@ -47,64 +50,65 @@
 		else if($status_num == 6){
 			$status_word = "Ticket Closed - Customer Collected";
 		}
-
 	}
 ?>
 <div class="container">
 	<div class="row">
-		<div class="col col-12 mt-2">
-			<div class="card mt-1">
+		<div class="col col-12 mt-4">
+			<div class="card my-1">
 				<div class="card-header">
-					<h2>Boat Information</h2>
+					Service Information
 				</div>
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 						<li class="list-group-item">
-							<b>Make: </b> <?php echo $boat_row['make']; ?>
+							<b>Service ID:</b> <?php echo $service_row['serviceid']; ?>
 						</li>
 						<li class="list-group-item">
-							<b>Model: </b> <?php echo $boat_row['model']; ?>
+							<b>Customer Name:</b> <?php echo $customer_row['fname']; echo " "; echo $customer_row['lname']; ?>
 						</li>
 						<li class="list-group-item">
-							<b>Engine Hours: </b> <?php echo $service_row['hours']; ?>
+							<b>Date Recieved:</b> <?php echo $service_row['recieved']; ?>
 						</li>
 						<li class="list-group-item">
-							<b>Year: </b> <?php echo $boat_row['year']; ?>
-						</li>
-						<li class="list-group-item">
-							<b>VIN: </b> <?php echo $boat_row['vin']; ?>
-						</li>
-						<li class="list-group-item">
-							<b>Engine Size: </b> <?php echo $boat_row['engine_size']; ?>
-						</li>
-						<li class="list-group-item">
-							<b>Color: </b> <?php echo $boat_row['color']; ?>
+							<b>Current Status:</b> <?php echo $status_word; ?> 
 						</li>
 					</ul>
 				</div>
-				<div class="card-footer justify-content-center">
-					<form action="" method="post">
-						<button class="btn btn-danger btn-lg" type="submit" name="remove-submit">Remove Boat</button>
-					</form>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-12 mt-2">
+			<div class="card mt-1">
+				<div class="card-header">
+					<h2>Trailer Information</h2>
+				</div>
+				<div class="card-body">
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							<b>Make: </b> <?php echo $trailer_row['make']; ?>
+						</li>
+						<li class="list-group-item">
+							<b>Model: </b> <?php echo $trailer_row['model']; ?>
+						</li>
+						<li class="list-group-item">
+							<b>Year: </b> <?php echo $trailer_row['year']; ?>
+						</li>
+						<li class="list-group-item">
+							<b>VIN: </b> <?php echo $trailer_row['vin']; ?>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="row justify-content-left">
 		<div class="col-2 mt-2">
-			<a href="view-service.php?id=<?php echo $service_row['serviceid'];?>" class="btn-info btn" role="button">Back</a>
+			<a href="view-service.php?id=<?php echo $service;?>" class="btn-info btn" role="button">Back</a>
 		</div>
 	</div>
 </div>
-<?php 
-	if(isset($_POST['remove-submit'])){
-		$boat = $_GET['id'];
-		$queries = "UPDATE services SET boatid=0 WHERE boatid=" . $boat . ";";
-		$queries .= "DELETE FROM boats WHERE boatid=" . $boat . ";";
-
-		$run = mysqli_multi_query($conn, $queries);
-		header("Location: view-service.php?id=" . $service);
-	}
-
+<?php
 	require "footer.php";
 ?>

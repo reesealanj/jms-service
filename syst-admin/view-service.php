@@ -20,13 +20,13 @@
 	if($service_row['boatid'] != NULL){
 		$boat = 1;
 	}
-	if($service_row['engine1'] != NULL){
+	if($service_row['engine1'] != NULL && $service_row['engine1'] != 0){
 		$engines++;
 	}
-	if($service_row['engine2'] != NULL){
+	if($service_row['engine2'] != NULL && $service_row['engine2'] != 0){
 		$engines++;
 	}
-	if($service_row['engine3'] != NULL){
+	if($service_row['engine3'] != NULL && $service_row['engine3'] != 0){
 		$engines++;
 	}
 
@@ -40,12 +40,20 @@
 	$run_emp = mysqli_query($conn, $query);
 	$employee_row = mysqli_fetch_assoc($run_emp);
 
+	$trailer = $service_row['trailerid'];
+	if($trailer != NULL && $trailer != 0){
+		$query = "SELECT * FROM trailers WHERE trailerid=" . $trailer;
+		$run_trailer = mysqli_query($conn, $query);
+		$trailer_row = mysqli_fetch_assoc($run_trailer);
+	}
+
 	$boat = $service_row['boatid'];
-	if($boat != NULL){
+	if($boat != NULL && $boat != 0){
 		$query = "SELECT * FROM boats WHERE boatid=" . $boat;
 		$run_boat = mysqli_query($conn, $query);
 		$boat_row = mysqli_fetch_assoc($run_boat);
 	}
+
 	$lines = $service_row['serviceid'];
 	$query = "SELECT * FROM ticketlines WHERE ticketid=" . $lines . " ORDER BY itemtype ASC";
 	$run_lines = mysqli_query($conn, $query);
@@ -67,7 +75,7 @@
 		$status_word = "Service Paused - Waiting For Callback";
 	}
 	else if($status_num == 4){
-		$status_word = "Service Completed - Customer Contacted";
+		$status_word = "Service Completed - Customer Not Contacted";
 	}
 	else if($status_num == 5){
 		$status_word = "Service Completed - Customer Contacted";
@@ -105,13 +113,33 @@
 		<div class="col">
 			<div class="card my-4">
 				<div class="card-header">
+					<b>Ticket Actions</b>
+				</div>
+				<div class="card-body">
+					<ul class="list-group list-group-flush align-items-center">
+						<li class="list-group-item">
+							<a href="add-service.php?id=<?php echo $service_row['serviceid'];?>" class="btn btn-lg btn-primary" role="button">Update Ticket Items</a>
+						</li>
+						
+						<li class="list-group-item">
+							<a href="update-service.php?id=<?php echo $service_row['serviceid'];?>" class="btn btn-lg btn-primary" role="button">Update Ticket Status</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card my-4">
+				<div class="card-header">
 					<b>Boat Information</b>
 				</div>
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 					<?php
 						if($boat == NULL || $boat == 0){
-							echo "<li class='list-group-item'><a href='add-boat.php?id=".$service_row['serviceid']."' class='btn btn-success' role='button'>Add Boat</a></li>";
+							echo "<li class='list-group-item'><a href='add-boat.php?id=".$service_row['serviceid']."' class='btn btn-success btn-sm' role='button'>Add Boat</a></li>";
 						}
 						else{
 							$output = "
@@ -129,8 +157,8 @@
 							</li>
 							<li class='list-group-item'>
 								<a href='view-boat.php?id=" . $boat_row['boatid'] . "
-							' class='btn btn-info' role='button'>View</a>
-								<a href='remove-boat.php?id=" . $boat_row['boatid'] . "' class='btn btn-danger' role='button'>Remove</a>
+							' class='btn btn-info btn-sm' role='button'>View</a>
+								<a href='remove-boat.php?id=" . $boat_row['boatid'] . "' class='btn btn-danger btn-sm' role='button'>Remove</a>
 							</li>
 							";
 
@@ -141,30 +169,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
 		<div class="col">
-			<div class="card my-2">
-				<div class="card-header">
-					<b>Ticket Actions</b>
-				</div>
-				<div class="card-body">
-					<ul class="list-group list-group-flush align-items-center">
-						<li class="list-group-item">
-							<a href="add-service.php?id=<?php echo $service_row['serviceid'];?>" class="btn btn-lg btn-primary" role="button">Update Ticket Items</a>
-						</li>
-						<li class="list-group-item">
-							<a href="edit-service.php?id=<?php echo $service_row['serviceid'];?>" class="btn btn-lg btn-primary" role="button">Edit Ticket Information</a>
-						</li>
-						<li class="list-group-item">
-							<a href="update-service.php?id=<?php echo $service_row['serviceid'];?>" class="btn btn-lg btn-primary" role="button">Update Ticket Status</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card my-2">
+			<div class="card my-4">
 				<div class="card-header">
 					<b>Engine Information</b>
 					(<?php echo $engines;?> on boat)
@@ -175,19 +181,58 @@
 						<li class="list-group-item">
 						<?php
 							if($engines >= 1){
-								echo "<a href='view-motor.php?id={$service_row['engine1']}' class='btn btn-info btn-sm mx-1'>Engine 1</a>";
+								echo "<a href='view-motor.php?id={$service_row['serviceid']}&e=1' class='btn btn-info btn-sm mx-1'>Engine 1</a>";
 							}
 							if($engines >= 2){
-								echo "<a href='view-motor.php?id={$service_row['engine2']}' class='btn btn-info btn-sm mx-1'>Engine 2</a>";
+								echo "<a href='view-motor.php?id={$service_row['serviceid']}&e=2' class='btn btn-info btn-sm mx-1'>Engine 2</a>";
 							}
 							if($engines >= 3){
-								echo "<a href='view-motor.php?id={$service_row['engine1']}' class='btn btn-info btn-sm mx-1'>Engine 3</a>";
+								echo "<a href='view-motor.php?id={$service_row['serviceid']}&e=3' class='btn btn-info btn-sm mx-1'>Engine 3</a>";
 							}
 							if($engines < 3){
 								echo "<a href='add-engine.php?id={$service_row['serviceid']}' class='btn btn-success btn-sm mx-1'>Add Engine</a>";
 							}
+							if($engines > 0){
+								echo "<a href='remove-engine.php?id=" . $service_row['serviceid'] . "' class='btn btn-danger btn-sm my-2' role='button'>Remove</a>";
+							}
 						?>
 						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card my-4">
+				<div class="card-header">
+					<b>Trailer Information</b>
+				</div>
+				<div class="card-body">
+					<ul class="list-group list-group-flush">
+					<?php
+						if($trailer == NULL || $trailer == 0){
+							echo "<li class='list-group-item'><a href='add-trailer.php?id=".$service_row['serviceid']."' class='btn btn-success btn-sm' role='button'>Add Trailer</a></li>";
+						}
+						if($trailer != NULL && $trailer != 0){
+							echo "<li class='list-group-item'>
+								<b>Vin:</b>
+							" . $trailer_row['vin'] . "
+							</li>
+							<li class='list-group-item'>
+								<b>Make: </b>
+							" . $trailer_row['make'] . "
+							</li>
+							<li class='list-group-item'>
+								<b>Model:</b>
+							" . $trailer_row['model'] . "
+							</li>
+							<li class='list-group-item'>
+								<a href='view-trailer.php?id=" . $service_row['serviceid'] . "
+							' class='btn btn-info btn-sm' role='button'>View</a>
+								<a href='remove-trailer.php?id=" . $service_row['serviceid'] . "' class='btn btn-danger btn-sm' role='button'>Remove</a>
+							</li>
+							";
+						}
+					?>
 					</ul>
 				</div>
 			</div>
