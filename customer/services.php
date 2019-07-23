@@ -11,7 +11,7 @@
 				<div class="card-body">
 				<?php
 					$user = $_SESSION['userid'];
-					$query = "SELECT s.*, u.fname, u.lname FROM services as s, users as u WHERE s.customer=" . $user . " AND u.userid=s.customer ORDER BY recieved";
+					$query = "SELECT s.*, u.fname, u.lname FROM services as s, users as u WHERE s.customer=" . $user . " AND u.userid=s.customer ORDER BY serviceid DESC";
 					$run = mysqli_query($conn, $query);
 					if(mysqli_num_rows($run) == 0){
 						echo "<h3 class='text-muted text-center'>There are no services matching your search</h3>";

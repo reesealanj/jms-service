@@ -110,7 +110,7 @@
 							<?php
 							if($customer == NULL || $customer == 0){
 								echo "<button type='button' class='btn btn-success btn-block btn-lg' data-toggle='modal' data-target='#serviceModal'>New Customer</button>
-
+								<button type='button' class='btn btn-success btn-block btn-lg' data-toggle='modal' data-target='#serviceModal2'>Existing Customer</button>
 								<div class='modal fade' id='serviceModal' tabindex='-1' role='dialog' aria-labelledby='serviceModalTitle' aria-hidden='true'>
 									<div class='modal-dialog modal-dialog-centered' role='document'>
 										<div class='modal-content'>
@@ -148,6 +148,38 @@
 											<div class='modal-footer'>
 												<button class='btn btn-secondary' data-dismiss='modal'>Close</button>
 												<button class='btn btn-primary' type='submit' name='create-customer-submit'>Create</button>
+											</div>
+										</form>
+										</div>
+									</div>
+								</div>
+								<div class='modal fade' id='serviceModal2' tabindex='-1' role='dialog' aria-labelledby='serviceModalTitle2' aria-hidden='true'>
+									<div class='modal-dialog modal-dialog-centered' role='document'>
+										<div class='modal-content'>
+											<div class='modal-header'>
+												<h5 class='modal-title' id='serviceModalTitle2'>
+													Choose Customer
+												</h5>
+												<button class='close' type='button' data-dismiss='modal' aria-label='Close'>
+													<span aria-hidden='true'>&times;</span>
+												</button>
+											</div>
+										<form method='post' action=''>
+											<div class='modal-body'>
+											<select name='choose-cust' class='form-control'>";
+									$query = "SELECT * FROM users WHERE role=4";
+									$run = mysqli_query($conn, $query);
+									while($row = mysqli_fetch_assoc($run)){
+										$out = "<option value='" . $row['userid'] . "'>";
+										$out .= " " . $row['fname'] . " " . $row['lname'];
+										$out .= "</option>\n";
+										echo $out; 
+									}		
+
+											echo "</select></div>
+											<div class='modal-footer'>
+												<button class='btn btn-secondary' data-dismiss='modal'>Close</button>
+												<button class='btn btn-primary' type='submit' name='select-customer-submit'>Choose</button>
 											</div>
 										</form>
 										</div>
@@ -393,6 +425,13 @@ if(isset($_POST['create-customer-submit'])){
 		$update = "UPDATE services SET customer=" . $row['userid'] . " WHERE serviceid=" . $_GET['id'];
 		$run = mysqli_query($conn, $update);
 		echo "<script>location.replace('view-service.php?id=" . $_GET['id']  . "')</script>";
+}
+
+if(isset($_POST['select-customer-submit'])){
+	$cust = $_POST['choose-cust'];
+	$update = "UPDATE services SET customer=" . $cust . " WHERE serviceid=" . $_GET['id'];
+	$run = mysqli_query($conn, $update);
+	echo "<script>location.replace('view-service.php?id=" . $_GET['id']  . "')</script>";
 }
 	require "footer.php";
 ?>

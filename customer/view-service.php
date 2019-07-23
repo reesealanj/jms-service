@@ -132,7 +132,7 @@
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 					<?php
-						if(($status_num == 6) && ($boat == NULL || $boat == 0)){
+						if(($boat == NULL || $boat == 0)){
 							echo "<li class='list-group-item'>No Boat Listed</li>";
 						}
 						else{
@@ -180,7 +180,7 @@
 							if($engines >= 3){
 								echo "<li class='list-group-item'><a href='view-motor.php?id={$service_row['serviceid']}&e=3' class='btn btn-info btn-sm mx-1'>Engine 3</a></li>";
 							}
-							if(($engines == 0) && ($status_num == 6)){
+							if(($engines == 0)){
 								echo "<li class='list-group-item'>No Engines Listed</li>";
 							}
 						?>
@@ -196,7 +196,7 @@
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 					<?php
-						if(($trailer == NULL || $trailer == 0) && $status_num == 6){
+						if(($trailer == NULL || $trailer == 0)){
 							echo "<li class='list-group-item'>No Trailer Listed</li>";
 						}
 						if($trailer != NULL && $trailer != 0){
