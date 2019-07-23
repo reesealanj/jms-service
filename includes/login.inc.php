@@ -44,12 +44,12 @@
 		    }
 		    //SERVICE EMPLOYEE
 		    else if($role == 2){
-		      header("Location: ../sales/index.php");
+		      header("Location: ../service/index.php");
 		      exit();
 		    }
 		    //SALES EMPLOYEE
 		    else if($role == 3){
-		      header("Location: ../service/index.php");
+		      header("Location: ../sales/index.php");
 		      exit();
 		    }
 		    //CUSTOMER
