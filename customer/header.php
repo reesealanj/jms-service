@@ -24,8 +24,8 @@
 		<div class="collapse navbar-collapse" id="navbarMenu">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-				<li class="nav-item"><a href="users.php" class="nav-link">Users</a></li>
-				<li class="nav-item"><a href="services.php" class="nav-link">Services</a></li>
+				<li class="nav-item"><a href="services.php" class="nav-link">My Services</a></li>
+				<li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
 			</ul>
 		</div>
 	</nav>

@@ -30,8 +30,12 @@
 						<form action="" method="post">
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="username">Username</label>
-									<input type="text" class="form-control" name="username" placeholder="Username">
+									<label for="fname">First Name</label>
+									<input type="text" class="form-control" name="fname" placeholder="First Name">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="lname">Last Name</label>
+									<input type="text" class="form-control" name="lname" placeholder="Last Name">
 								</div>
 								<div class="form-group col-md-6">
 									<label for="username">Email/Phone Number</label>
@@ -40,8 +44,14 @@
 							</div>
 							<div class="form-row">
 								<p class="card-text text-muted text-center">
-									The Username and Contact Information should match the one you gave at the Shop.
+									The contact information can be either the email or the phone number you gave at the shop. Set your own personal username and password below. 
 								</p>
+							</div>
+							<div class="form-row mt-4">
+								<div class="form-group col-md-6">
+									<label for="username">Set Username</label>
+									<input type="text" class="form-control" name="username" placeholder="Username">
+								</div>
 							</div>
 							<div class="form-row mt-4">
 								<div class="form-group col-md-6">
@@ -54,7 +64,7 @@
 								</div>
 								<div class="form-row">
 								<p class="card-text text-muted text-center">
-									Set a password with which you will use to log in to the system in the future.
+									Set your own personal username and password which you will use to log into the system in the future.
 								</p>
 							</div>
 							</div>
@@ -71,9 +81,10 @@
 							$contact = $_POST['contact'];
 							$pwd = $_POST['password'];
 							$rep_pwd = $_POST['reppassword'];
-						
+							$fname = $_POST['fname'];
+							$lname = $_POST['lname'];
 							//check verification info was inputted
-							if(empty($username) || empty($contact)){
+							if( empty($fname)||empty($lname) || empty($contact)){
 								echo "<div class='col col-auto alert alert-danger text-center mx-1 my-1' role='alert'>You must fill in verification information!</div>";
 								exit();
 							}
@@ -82,24 +93,34 @@
 								echo "<div class='col col-auto alert alert-danger text-center mx-1 my-1' role='alert'>Try Again! Provided Passwords Don't Match!</div>";
 								exit();
 							}
+							//verify username is not taken
+							$query = "SELECT * FROM users WHERE username='" . $username . "'";
+							$run = mysqli_query($conn, $query);
+							if(mysqli_num_rows($run) > 0){
+								echo "<div class='col col-auto alert alert-danger text-center mx-1 my-1' role='alert'>That username is already taken! Try again!</div>";
+								exit();
+							}
 							//Check that account is in system
-							$query = "SELECT * FROM users WHERE username='" . $username . "' AND (email='" . $contact . "' OR phone='" . $contact . "')";
+							$query = "SELECT * FROM users WHERE fname='" . $fname . "' AND lname='".$lname."' AND (email='" . $contact . "' OR phone='" . $contact . "')";
 							$run = mysqli_query($conn, $query);
 							if(mysqli_num_rows($run) == 0){
 								echo "<div class='col col-auto alert alert-danger text-center mx-1 my-1' role='alert'>The Verification information doesn't match anything in the system!</div>";
 								exit();
 							}
+
 							//verify account has not been claimed
 							if(mysqli_num_rows($run) == 1){
 								$result = mysqli_fetch_assoc($run);
 								if($result['password'] != NULL){
-									echo "<div class='col col-auto alert alert-danger text-center mx-1 my-1' role='alert'>An Account with that information has already been claimed! Try <a href='../index.php' class='alert-link'>Click here to log in!</a></div>";
+									echo "<div class='col col-auto alert alert-danger text-center mx-1 my-1' role='alert'>An Account with that information has already been claimed! <a href='../index.php' class='alert-link'>Click here to log in!</a></div>";
 									exit();
 								}
 
 								$hash = password_hash($pwd, PASSWORD_DEFAULT);
 
 								$update = "UPDATE users SET password='" . $hash ."' WHERE userid=" . $result['userid'];
+								$update2 = "UPDATE users SET username='" . $username ."' WHERE userid=" . $result['userid'];
+								$run2 = mysqli_query($conn, $update2);
 								$run = mysqli_query($conn, $update);
 								echo "<div class='col col-auto alert alert-success text-center mx-1 my-1' role='alert'>Success! Your account has been claimed. <a href='../index.php' class='alert-link'>Click here to log in!</a></div>";
 									exit();

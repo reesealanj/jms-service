@@ -18,11 +18,6 @@
 
 	$service_row = mysqli_fetch_assoc($run);
 
-	if($service_row['status'] == 0){
-		$update = "UPDATE services SET status=1 WHERE serviceid=" . $_GET['id'];
-		$run = mysqli_query($conn, $update);
-	}
-
 	if($service_row['boatid'] != NULL){
 		$boat = 1;
 	}
@@ -109,50 +104,7 @@
 						<li class="list-group-item">
 							<?php
 							if($customer == NULL || $customer == 0){
-								echo "<button type='button' class='btn btn-success btn-block btn-lg' data-toggle='modal' data-target='#serviceModal'>New Customer</button>
-
-								<div class='modal fade' id='serviceModal' tabindex='-1' role='dialog' aria-labelledby='serviceModalTitle' aria-hidden='true'>
-									<div class='modal-dialog modal-dialog-centered' role='document'>
-										<div class='modal-content'>
-											<div class='modal-header'>
-												<h5 class='modal-title' id='serviceModalTitle'>
-													Create Customer
-												</h5>
-												<button class='close' type='button' data-dismiss='modal' aria-label='Close'>
-													<span aria-hidden='true'>&times;</span>
-												</button>
-											</div>
-										<form method='post' action=''>
-											<div class='modal-body'>
-												<div class='form-row'>
-													<div class='form-group mx-1'>
-														<label for='fname'>First Name</label>
-														<input type='text' class='form-control' placeholder='First Name' name='fname' required='true'>
-													</div>
-													<div class='form-group mx-1'>
-														<label for='lname'>Last Name</label>
-														<input type='text' class='form-control' placeholder='Last Name' name='lname' required='true'>
-													</div>
-												</div>
-												<div class='form-row'>
-													<div class='form-group mx-1'>
-														<label for='email'>Email</label>
-														<input type='text' class='form-control' placeholder='nam@domain.com' name='email' required='true'>
-													</div>
-													<div class='form-group mx-1'>
-														<label for='phone'>Phone Number</label>
-														<input type='text' class='form-control' placeholder='000-000-0000' name='phone' required='true'>
-													</div>
-												</div>
-											</div>
-											<div class='modal-footer'>
-												<button class='btn btn-secondary' data-dismiss='modal'>Close</button>
-												<button class='btn btn-primary' type='submit' name='create-customer-submit'>Create</button>
-											</div>
-										</form>
-										</div>
-									</div>
-								</div>";
+								echo "<b>No Customer Listed</b>";
 							}
 							else {
 								echo "<b>Customer Name: </b>" . $customer_row['fname'] ." " . $customer_row['lname']; 
@@ -169,28 +121,6 @@
 				</div>
 			</div>
 		</div>
-		<?php
-			if($status_num != 6){
-				echo "<div class='col'>
-			<div class='card my-4'>
-				<div class='card-header'>
-					<b>Ticket Actions</b>
-				</div>
-				<div class='card-body'>
-					<ul class='list-group list-group-flush align-items-center'>
-						<li class='list-group-item'>
-							<a href='add-service.php?id=" . $service. "' class='btn btn-lg btn-primary' role='button'>Update Ticket Items</a>
-						</li>
-						
-						<li class='list-group-item'>
-							<a href='update-service.php?id=" .$service. "' class='btn btn-lg btn-primary' role='button'>Update Ticket Status</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>";
-			}
-		?>
 		
 	</div>
 	<div class="row">
@@ -202,11 +132,7 @@
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 					<?php
-
-						if(($boat == NULL || $boat == 0) && $status_num != 6){
-							echo "<li class='list-group-item'><a href='add-boat.php?id=".$service_row['serviceid']."' class='btn btn-success btn-sm' role='button'>Add Boat</a></li>";
-						}
-						else if(($status_num == 6) && ($boat == NULL || $boat == 0)){
+						if(($status_num == 6) && ($boat == NULL || $boat == 0)){
 							echo "<li class='list-group-item'>No Boat Listed</li>";
 						}
 						else{
@@ -226,7 +152,6 @@
 							<li class='list-group-item'>
 								<a href='view-boat.php?id=" . $boat_row['boatid'] . "
 							' class='btn btn-info btn-sm' role='button'>View</a>
-								<a href='remove-boat.php?id=" . $boat_row['boatid'] . "' class='btn btn-danger btn-sm' role='button'>Remove</a>
 							</li>
 							";
 
@@ -255,12 +180,6 @@
 							if($engines >= 3){
 								echo "<li class='list-group-item'><a href='view-motor.php?id={$service_row['serviceid']}&e=3' class='btn btn-info btn-sm mx-1'>Engine 3</a></li>";
 							}
-							if(($engines < 3) && $status_num != 6){
-								echo "<li class='list-group-item'><a href='add-engine.php?id={$service_row['serviceid']}' class='btn btn-success btn-sm mx-1'>Add Engine</a></li>";
-							}
-							if($engines > 0){
-								echo "<li class='list-group-item'><a href='remove-engine.php?id=" . $service_row['serviceid'] . "' class='btn btn-danger btn-sm my-2' role='button'>Remove</a></li>";
-							}
 							if(($engines == 0) && ($status_num == 6)){
 								echo "<li class='list-group-item'>No Engines Listed</li>";
 							}
@@ -277,9 +196,6 @@
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 					<?php
-						if(($trailer == NULL || $trailer == 0) && $status_num != 6){
-							echo "<li class='list-group-item'><a href='add-trailer.php?id=".$service_row['serviceid']."' class='btn btn-success btn-sm' role='button'>Add Trailer</a></li>";
-						}
 						if(($trailer == NULL || $trailer == 0) && $status_num == 6){
 							echo "<li class='list-group-item'>No Trailer Listed</li>";
 						}
@@ -299,7 +215,6 @@
 							<li class='list-group-item'>
 								<a href='view-trailer.php?id=" . $service_row['serviceid'] . "
 							' class='btn btn-info btn-sm' role='button'>View</a>
-								<a href='remove-trailer.php?id=" . $service_row['serviceid'] . "' class='btn btn-danger btn-sm' role='button'>Remove</a>
 							</li>
 							";
 						}
@@ -379,20 +294,5 @@
 </div>
 
 <?php
-if(isset($_POST['create-customer-submit'])){
-		$fname = $_POST['fname'];
-		$lname = $_POST['lname'];
-		$email = $_POST['email'];
-		$phone = $_POST['phone'];
-
-		$query = "INSERT INTO users (fname, lname, email, phone, role) VALUES ('" . $fname . "','" . $lname . "','" . $email . "','" . $phone . "', 4)";
-		$run = mysqli_query($conn, $query);
-		$select = "SELECT * FROM users WHERE fname='" . $fname . "' AND lname='" . $lname. "' AND email='" . $email . "' AND phone='" . $phone. "'";
-		$run = mysqli_query($conn, $select);
-		$row = mysqli_fetch_assoc($run);
-		$update = "UPDATE services SET customer=" . $row['userid'] . " WHERE serviceid=" . $_GET['id'];
-		$run = mysqli_query($conn, $update);
-		echo "<script>location.replace('view-service.php?id=" . $_GET['id']  . "')</script>";
-}
 	require "footer.php";
 ?>

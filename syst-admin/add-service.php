@@ -24,6 +24,7 @@
 		$run_service = mysqli_query($conn, $services);
 
 		$parts_total = 0.0;
+		$hours_total = 0.0;
 
 		$status_num = $service_row['status'];
 		$status_word = "";
@@ -67,8 +68,10 @@
 					<ul class="list-group list-group-flush">
 					<?php
 					$line = "";
+					$num = 0;
 
 					while($lines_row = mysqli_fetch_assoc($run_line_items)){
+						$num++; 
 						switch($lines_row['itemtype']){
 							//case 1 -- Part Line
 							case(1):
@@ -78,12 +81,41 @@
 								$part_info = mysqli_fetch_assoc($run);
 
 								$parts_total += $part_info['partcost'];
-								$line = "<li class='list-group-item'><a href='remove-line-item.php?s=" . $service . "&p=" . $part_info['partnumber'] . "' class='btn btn-sm btn-danger mr-1' role='button'>x</a><b>Part:</b> " . $part_info['partname'] . " ($" . $part_info['partcost'] . ")";
+								$line = "<li class='list-group-item'><a href='remove-line-item.php?t=1&s=" . $service . "&p=" . $part_info['partnumber'] . "' class='btn btn-sm btn-danger mr-1' role='button'>x</a><b>Part:</b> " . $part_info['partname'] . " ($" . $part_info['partcost'] . ")";
 								if($lines_row['comments'] != NULL){
 									$line .= " <br />&nbsp;&nbsp;&nbsp;&nbsp;<b>Comment:</b> " . $lines_row['comments'] . "</li>";
 								}
 								else{
-									$line .="</li>";
+									$line .="<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modal" . $num . "'>Add Comment</button>
+
+										<div class='modal fade' id='modal" . $num . "' tabindex='-1' role='dialog' aria-labelledby='modal" . $num . "Title' aria-hidden='true'>
+											<div class='modal-dialog modal-dialog-centered' role='document'>
+												<div class='modal-content'>
+													<div class='modal-header'>
+														<h5 class='modal-title' id='modal" . $num . "Title'>
+															Add Comments
+														</h5>
+														<button class='close' type='button' data-dismiss='modal' aria-label='Close'>
+															<span aria-hidden='true'>&times;</span>
+														</button>
+													</div>
+												<form method='post' action='add-comment.php?s=" . $service . "&p=" . $part_info['partnumber'] . "&t=1'>
+													<div class='modal-body'>
+														<div class='form-row'>
+															<div class='form-group'>
+																<label for='comments'>Comments:</label>
+																<textarea name='comments' class='form-control' cols='50' rows='5'></textarea>
+															</div>
+														</div>
+													</div>
+													<div class='modal-footer'>
+														<button class='btn btn-secondary' data-dismiss='modal'>Close</button>
+														<button class='btn btn-primary' type='submit' name='add-comment-submit'>Add</button>
+													</div>
+												</form>
+												</div>
+											</div>
+										</div>";
 								}
 
 								echo $line;
@@ -93,14 +125,79 @@
 								$query = "SELECT * FROM servicelines WHERE itemid=" . $service_number;
 								$run = mysqli_query($conn, $query);
 								$line_info = mysqli_fetch_assoc($run);
+								$line = "<li class='list-group-item'><a href='remove-line-item.php?t=0&s=" . $service . "&p=" . $line_info['itemid'] . "' class='btn btn-sm btn-danger mr-1' role='button'>x</a><b>Labor: </b>" . $line_info['description'];
+								if($lines_row['hours'] != NULL){
+									$line .= " <br />&nbsp;&nbsp;&nbsp;&nbsp;<b>Hours:</b> " . $lines_row['hours'];
+									$hours_total += $lines_row['hours'];
+								}
+								else{
+									$line .="<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modal2" . $num . "'>Add Hours</button>
 
-								$line = "<li class='list-group-item'><b>Labor: </b>" . $line_info['description'];
-								if($lines_info['comments'] != NULL){
+										<div class='modal fade' id='modal2" . $num . "' tabindex='-1' role='dialog' aria-labelledby='modal2" . $num . "Title' aria-hidden='true'>
+											<div class='modal-dialog modal-dialog-centered' role='document'>
+												<div class='modal-content'>
+													<div class='modal-header'>
+														<h5 class='modal-title' id='modal2" . $num . "Title'>
+															Add Hours
+														</h5>
+														<button class='close' type='button' data-dismiss='modal' aria-label='Close'>
+															<span aria-hidden='true'>&times;</span>
+														</button>
+													</div>
+												<form method='post' action='add-hours.php?s=" . $service . "&p=" . $line_info['itemid'] . "&t=0'>
+													<div class='modal-body'>
+														<div class='form-row'>
+															<div class='form-group'>
+																<label for='hours'>Hours:</label>
+																<input type='number' name='hours' class='form-control' step='any' min='0' placeholder='00.00'>
+															</div>
+														</div>
+													</div>
+													<div class='modal-footer'>
+														<button class='btn btn-secondary' data-dismiss='modal'>Close</button>
+														<button class='btn btn-primary' type='submit' name='add-comment-submit'>Add</button>
+													</div>
+												</form>
+												</div>
+											</div>
+										</div>";
+								}
+								if($lines_row['comments'] != NULL){
 									$line .= " <br />&nbsp;&nbsp;&nbsp;&nbsp;<b>Comment:</b> " . $lines_row['comments'] . "</li>";
 								}
 								else{
-									$line .="</li>";
+									$line .="<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#modal" . $num . "'>Add Comment</button>
+
+										<div class='modal fade' id='modal" . $num . "' tabindex='-1' role='dialog' aria-labelledby='modal" . $num . "Title' aria-hidden='true'>
+											<div class='modal-dialog modal-dialog-centered' role='document'>
+												<div class='modal-content'>
+													<div class='modal-header'>
+														<h5 class='modal-title' id='modal" . $num . "Title'>
+															Add Comments
+														</h5>
+														<button class='close' type='button' data-dismiss='modal' aria-label='Close'>
+															<span aria-hidden='true'>&times;</span>
+														</button>
+													</div>
+												<form method='post' action='add-comment.php?s=" . $service . "&p=" . $line_info['itemid'] . "&t=0'>
+													<div class='modal-body'>
+														<div class='form-row'>
+															<div class='form-group'>
+																<label for='comments'>Comments:</label>
+																<textarea name='comments' class='form-control' cols='50' rows='5'></textarea>
+															</div>
+														</div>
+													</div>
+													<div class='modal-footer'>
+														<button class='btn btn-secondary' data-dismiss='modal'>Close</button>
+														<button class='btn btn-primary' type='submit' name='add-comment-submit'>Add</button>
+													</div>
+												</form>
+												</div>
+											</div>
+										</div>";
 								}
+								
 
 								echo $line;
 								break;
@@ -110,7 +207,7 @@
 					</ul>
 				</div>
 				<div class="card-footer">
-					<h5>Total Cost in Parts: $<?php echo $parts_total; ?></h5>
+					<h5>Total Cost in Parts: $<?php echo$parts_total;?> || Total Labor Hours: <?php echo $hours_total;?></h5>
 				</div>
 			</div>
 		</div>
@@ -122,7 +219,50 @@
 					<h3>Service/Labor</h3>
 				</div>
 				<div class="card-body col-12 align-text-center">
-					<a href="new-service-item.php" role="button" class="btn btn-success btn-block">Create New</a>
+					<!-- Modal Trigger -->
+					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#serviceModal">Create New</button>
+					<!-- Modal Code -->
+					<div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="serviceModalTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="serviceModalTitle">
+										Create Service Item
+									</h5>
+									<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							<form method="post" action="">
+								<div class="modal-body">
+									<div class="form-row">
+										<div class="form-group">
+											<label for="description">Description</label>
+											<textarea name="description" class="form-control" cols="30" rows="2"></textarea>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group">
+											<label for="hours">Labor Hours</label>
+											<input type="number" class="form-control" name="labor" step="any" min="0" placeholder="00.00">
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group">
+											<label for="comments">Comments</label>
+											<textarea name="comments" class="form-control" cols="30" rows="5"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button class="btn btn-primary" type="submit" name="add-service-submit">Add</button>
+								</div>
+							</form>
+							</div>
+						</div>
+					</div>
+
 					<form action="" class="my-2 form-inline" method="post">
 						<input type="search" class="form-control col-9 ml-auto" placeholder="Search" aria-label="search" name="user-query-service">
 						<button class="btn btn-info btn-sm col-2 ml-auto" type="submit" name="search-service">Search</button>
@@ -139,7 +279,7 @@
 						<div class='container'>
 							<div class='table-responsive'>
 								<table class='table table-hover'>
-									<caption>Displaying " . mysqli_num_rows($run) . " parts.</caption>
+									<caption>Displaying " . mysqli_num_rows($run) . " labor items.</caption>
 									<thead>
 										<tr>
 											<th>Description</th>
@@ -156,8 +296,7 @@
 							<tr>
 								<td>" . $name . "</td>
 								<td>
-									<a class='btn btn-warning btn-sm mx-0 my-1' href='edit-service-item.php?id=" . $table_row['itemid'] . "' role='button'>Edit</a>
-									<a class='btn btn-success btn-sm mx-0 my-1' href='add-service-line.php?s=" . $service . "&p=" . $table_row['itemid'] . "' role='button'>Add</a>
+									<a class='btn btn-success btn-sm mx-0 my-1' href='add-line-item.php?t=0&s=" . $service . "&p=" . $table_row['itemid'] . "' role='button'>Add</a>
 								</td>
 							\n";
 						}
@@ -180,7 +319,47 @@
 					<h3>Parts</h3>
 				</div>
 				<div class="card-body col-12">
-					<a href="new-part.php" role="button" class="btn btn-success btn-block">Create New</a>
+					<!-- Modal Trigger -->
+					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#partsModal">Create New</button>
+					<!-- Modal Code -->
+					<div class="modal fade" id="partsModal" tabindex="-1" role="dialog" aria-labelledby="partsModalTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="partsModalTitle">
+										Create Part
+									</h5>
+									<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							<form method="post" action="">
+								<div class="modal-body">
+									<div class="form-row">
+										<div class="form-group">
+											<label for="partname">Name:</label>
+											<input type="text" class="form-control" name="partname" placeholder="Name">
+
+											<label for="partcost">Cost:</label>
+											<input class="form-control" type="number" min="0" step="any" placeholder="000.00" name="partcost">
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group">
+											<label for="comments">Comments</label>
+											<textarea name="comments" class="form-control" cols="30" rows="5"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button class="btn btn-primary" type="submit" name="add-part-submit">Add</button>
+								</div>
+							</form>
+							</div>
+						</div>
+					</div>
+
 					<form action="" class="my-2 form-inline" method="post">
 						<input type="search" class="form-control col-9 ml-auto" placeholder="Search" aria-label="search" name="user-query-parts">
 						<button class="btn btn-info btn-sm col-2 ml-auto" type="submit" name="search-parts">Search</button>
@@ -217,8 +396,7 @@
 								<td>" . $name . "</td>
 								<td>" . $cost . "</td>
 								<td>
-									<a class='btn btn-warning btn-sm mx-0 my-1' href='edit-part.php?id=" . $table_row['partnumber'] . "' role='button'>Edit</a>
-									<a class='btn btn-success btn-sm mx-0 my-1' href='add-part.php?s=" . $service . "&p=" . $table_row['partnumber'] . "' role='button'>Add</a>
+									<a class='btn btn-success btn-sm mx-0 my-1' href='add-line-item.php?t=1&s=" . $service . "&p=" . $table_row['partnumber'] . "' role='button'>Add</a>
 								</td>
 							\n";
 						}
@@ -243,5 +421,43 @@
 	</div>
 </div>
 <?php
+	if(isset($_POST['add-service-submit'])){
+		$service = $_GET['id'];
+		$description = $_POST['description'];
+		$comments = $_POST['comments'];
+		$hours = $_POST['labor'];
+
+		$insert_service = "INSERT INTO servicelines (description) VALUES ('" . $description . "')";
+		$run_insert_service = mysqli_query($conn, $insert_service);
+
+		$get_number = "SELECT * FROM servicelines WHERE description='" . $description . "'";
+		$run_get_number=mysqli_query($conn, $get_number);
+		$number_row=mysqli_fetch_assoc($run_get_number);
+
+		$number=$number_row['itemid'];
+		$add_ticket = "INSERT INTO ticketlines (ticketid, itemtype, partnumber, comments, hours) VALUES (" . $service . ", 0, " . $number . ", '" .$comments ."', " . $hours . ")";
+		$run_add_ticket = mysqli_query($conn, $add_ticket);
+		echo "<script> location.replace('add-service.php?id=" . $service . "');</script>";
+		exit();
+	}
+	if(isset($_POST['add-part-submit'])){
+		$service = $_GET['id'];
+		$name = $_POST['partname'];
+		$cost = $_POST['partcost'];
+		$comments = $_POST['comments'];
+
+		$insert_part = "INSERT INTO partitems (partname, partcost) VALUES ('" . $name . "', " . $cost . ")";
+		$run_insert_part = mysqli_query($conn, $insert_part);
+
+		$get_number = "SELECT * FROM partitems WHERE partname='" . $name . "' AND partcost=" . $cost;
+		$run_get_number = mysqli_query($conn, $get_number);
+		$number_row = mysqli_fetch_assoc($run_get_number);
+
+		$number = $number_row['partnumber'];
+		$add_ticket = "INSERT INTO ticketlines (ticketid, itemtype, partnumber, comments) VALUES (" . $service . ", 1, " . $number . ", '" .$comments ."')";
+		$run_add_ticket = mysqli_query($conn, $add_ticket);
+		echo "<script> location.replace('add-service.php?id=" . $service . "');</script>";
+		exit();
+	}
 	require "footer.php";
 ?>

@@ -1,19 +1,30 @@
 <?php
 	require "header.php";
-	if(!isset($_GET['id'])){
-		header("Location: services.php?error=sne");
-		exit();
+
+	if(!isset($_SESSION['userid'])){
+		header("Location: services.php?error=ntc");
 	}
 	else{
-		$service = $_GET['id'];
+		$service = $_SESSION['userid'];
 		$query = "SELECT * FROM services WHERE serviceid=" . $service;
 		$run = mysqli_query($conn, $query);
+
+		if(mysqli_num_rows($run) < 1){
+			header("Location: services.php?error=tne");
+		}
+
 		$service_row = mysqli_fetch_assoc($run);
 
+		$trailer = $service_row['trailerid'];
 		$customer = $service_row['customer'];
+
 		$query = "SELECT * FROM users WHERE userid=" . $customer;
 		$run = mysqli_query($conn, $query);
 		$customer_row = mysqli_fetch_assoc($run);
+
+		$query = "SELECT * FROM trailers WHERE trailerid=" . $trailer;
+		$run = mysqli_query($conn, $query);
+		$trailer_row = mysqli_fetch_assoc($run);
 
 		$status_num = $service_row['status'];
 		$status_word = ""; 
@@ -43,18 +54,18 @@
 ?>
 <div class="container">
 	<div class="row">
-		<div class="col col-12 mt-5">
+		<div class="col col-12 mt-4">
 			<div class="card my-1">
 				<div class="card-header">
-					<h2>Service Information</h2>
+					Service Information
 				</div>
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 						<li class="list-group-item">
-							<b>Service ID: </b> <?php echo $service_row['serviceid']; ?>
+							<b>Service ID:</b> <?php echo $service_row['serviceid']; ?>
 						</li>
 						<li class="list-group-item">
-							<b>Customer: </b> <?php echo $customer_row['fname']; echo " "; echo $customer_row['lname']; ?>
+							<b>Customer Name:</b> <?php echo $customer_row['fname']; echo " "; echo $customer_row['lname']; ?>
 						</li>
 						<li class="list-group-item">
 							<b>Date Recieved:</b> <?php echo $service_row['recieved']; ?>
@@ -62,34 +73,30 @@
 						<li class="list-group-item">
 							<b>Current Status:</b> <?php echo $status_word; ?> 
 						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-12 mt-2">
+			<div class="card mt-1">
+				<div class="card-header">
+					<h2>Trailer Information</h2>
+				</div>
+				<div class="card-body">
+					<ul class="list-group list-group-flush">
 						<li class="list-group-item">
-							<form action="" method="post">
-								<label for="status"><b>Select New Status</b></label>
-								<select name="status" id="status" class="form-control">
-									<option class="option" value="0">
-										Ticket Opened - No Action Taken
-									</option>
-									<option class="option" value="1">
-										Service In Progress
-									</option>
-									<option class="option" value="2">
-										Service Paused - Waiting For Parts
-									</option>
-									<option class="option" value="3">
-										Service Paused - Waiting For Callback
-									</option>
-									<option class="option" value="4">
-										Service Completed - Customer Not Contacted
-									</option>
-									<option class="option" value="5">
-										Service Completed - Customer Contacted
-									</option>
-									<option class="option" value="6">
-										Ticket Closed - Customer Collected
-									</option>
-								</select>
-								<button type="submit" class="btn btn-lg btn-success my-2" name="status-update">Update Status</button>
-							</form>	
+							<b>Make: </b> <?php echo $trailer_row['make']; ?>
+						</li>
+						<li class="list-group-item">
+							<b>Model: </b> <?php echo $trailer_row['model']; ?>
+						</li>
+						<li class="list-group-item">
+							<b>Year: </b> <?php echo $trailer_row['year']; ?>
+						</li>
+						<li class="list-group-item">
+							<b>VIN: </b> <?php echo $trailer_row['vin']; ?>
 						</li>
 					</ul>
 				</div>
@@ -103,16 +110,5 @@
 	</div>
 </div>
 <?php
-	if(isset($_POST['status-update'])){
-		$status = $_POST['status'];
-		$query = "UPDATE services SET status=" . $status . " WHERE serviceid=" . $service;
-		$run = mysqli_query($conn, $query);
-
-		if($status == 6){
-			$finish = "UPDATE services SET completed=CURDATE() WHERE serviceid=" . $service;
-			$run = mysqli_query($conn, $finish);
-		}
-		header("Location: update-service.php?id=" . $service);
-	}
 	require "footer.php";
 ?>

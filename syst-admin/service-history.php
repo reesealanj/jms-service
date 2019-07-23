@@ -95,7 +95,7 @@
 								if($status_num == 6){
 									$table .= "<a class='btn btn-primary btn-sm mx-1 my-1' href='view-service.php?id=" . $serviceid . "' role='button'>View</a>";
 								}
-								$table.=	"<a class='btn btn-danger btn-sm mx-1 my-1' href='delete-service.php?id=" . $serviceid . "' role='button'>Delete</a>
+								$table.=	"
 								</td>
 							</tr>\n
 							";
@@ -180,7 +180,7 @@
 								if($status_num == 6){
 									$table .= "<a class='btn btn-primary btn-sm mx-1 my-1' href='view-service.php?id=" . $serviceid . "' role='button'>View</a>";
 								}
-								$table.=	"<a class='btn btn-danger btn-sm mx-1 my-1' href='delete-service.php?id=" . $serviceid . "' role='button'>Delete</a>
+								$table.=	"
 								</td>
 							</tr>\n
 							";

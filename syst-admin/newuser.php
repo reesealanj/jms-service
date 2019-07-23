@@ -13,23 +13,14 @@
 				<div class="card-body">
 						<form action="" method="post">
 							<div class="form-row">
-								<div class="form-group col-md-4">
+								<div class="form-group col-md-6">
 									<label for="fname">First Name</label>
 									<input type="text" class="form-control" name="fname" placeholder="First Name">
 								</div>
-								<div class="form-group col-md-4">
+								<div class="form-group col-md-6">
 									<label for="lname">Last Name</label>
 									<input type="text" class="form-control" name="lname" placeholder="Last Name">
 								</div>
-								<div class="col-md-4 mb-3">
-      								<label for="validationDefaultUsername">Username</label>
-      								<div class="input-group">
-        								<div class="input-group-prepend">
-          									<span class="input-group-text" id="inputGroupPrepend2">@</span>
-        								</div>
-        								<input type="text" class="form-control" placeholder="Username" name="username">
-      								</div>
-    							</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
@@ -72,18 +63,10 @@
 							$lname = $_POST['lname'];
 							$phone = $_POST['phone'];
 							$email = $_POST['email'];
-							$username = $_POST['username'];
 							$role = $_POST['userSelect'];
 
-							if(empty($fname) || empty($lname) || empty($username)){
+							if(empty($fname) || empty($lname)){
 								echo "<div class='col col-auto alert alert-danger text-center mx-1' role='alert'>You must fill in all fields!</div>";
-								$error = $error + 1;
-							}
-
-							$checkusername = "SELECT * FROM users WHERE username='" . $username . "'";
-							$run = mysqli_query($conn, $checkusername);
-							if(mysqli_num_rows($run) > 0){
-								echo "<div class='col col-auto alert alert-danger text-center mx-1' role='alert'>That username is already taken!</div>";
 								$error = $error + 1;
 							}
 
@@ -94,7 +77,7 @@
 
 							if($error == 0){
 								//There have been no errors, proceed creating a profile
-								$query = "INSERT INTO users(username, fname, lname, email, phone, role) VALUES ('" . $username . "','". $fname . "','" . $lname . "','" . $email . "','" . $phone . "'," . $role . ")";
+								$query = "INSERT INTO users(fname, lname, email, phone, role) VALUES ('". $fname . "','" . $lname . "','" . $email . "','" . $phone . "'," . $role . ")";
 								$run  = mysqli_query($conn, $query);
 								echo "<div class='col col-auto alert alert-success text-center mx-1' role='alert'>User Successfully Created!</div>";
 							}

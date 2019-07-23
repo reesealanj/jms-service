@@ -13,6 +13,11 @@
 
 ?>
 <div class="container">
+	<div class="row justify-content-center">
+		<div class="col col-6">
+			<a href="profile.php" class="btn btn-lg btn-block btn-info">Click here to edit your contact information.</a>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col col-12">
 			<div class="card mt-4">
@@ -21,15 +26,16 @@
 				</div>
 				<div class="card-body">
 				<?php
-					$query = "SELECT * FROM services WHERE status != 6";
+					$query = "SELECT * FROM services WHERE status != 6 AND customer=" . $user_id;
 					$run = mysqli_query($conn, $query);
 					$open = mysqli_num_rows($run);
 					echo "<h5 class='card-title'><span class='badge badge-info'>{$open}</span> Open Services</h5><hr class='my-1'>\n";
 					if($open == 0){
-						echo "<p class='card-text'>There are <b>no</b> open service tickets! Click <a href='create-service.php'>here</a> to open a new ticket.</p>";
+						echo "<p class='card-text'>There are <b>no</b> open service tickets under your name! <a href='services.php'>Click here to view your service history.</a></p>";
+						exit();
 
 					}
-					$query = "SELECT s.*, u.fname, u.lname FROM services as s, users as u WHERE s.status != 6 AND u.userid = s.customer";
+					$query = "SELECT s.*, u.fname, u.lname FROM services as s, users as u WHERE s.status != 6 AND u.userid = s.customer AND u.userid=" . $user_id;
 					$run = mysqli_query($conn, $query);
 
 					$table = "<div class='container'> 
@@ -97,57 +103,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col col-6">
-			<div class="card my-4">
-				<div class="card-header">
-					Contact Information
-				</div>
-				<div class="card-body">
-					<ul class="list-group list-group-flush">
-					<?php
-						$query = "SELECT * FROM users WHERE userid=" . $_SESSION['userid'];
-						$run = mysqli_query($conn, $query);
-						$result = mysqli_fetch_assoc($run);
-
-						echo "<li class='list-group-item'>Phone Number: {$result['phone']}</li>\n";
-						echo "<li class='list-group-item'>Email: {$result['email']}</li>\n";
-					?>
-					</ul>
-				</div>
-				<div class="card-footer text-muted">
-					Edit your information with the form to the right.
-				</div>
-			</div>
-		</div>
-			<div class="col col-6">
-				<div class="card mt-4">
-					<div class="card-header">
-						Update Contact Information
-					</div>
-					<div class="card-body">
-						<form action="update-info.php" method="post">
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputEmail">Email</label>
-									<input type="email" class="form-control" name="inputEmail" placeholder="Email">
-								</div>
-								<div class="form-group col-md-6">
-									<label for="inputPhone">Phone Number</label>
-									<input type="tel" class="form-control" name="inputPhone" placeholder="Phone Number">
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-12">
-									<button type="submit" class="btn btn-success btn-block" name="update">Update</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>	
+	
 </div>
+<?php
+	require "footer.php";
+?>
 <?php
 	require "footer.php";
 ?>
