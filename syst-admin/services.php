@@ -10,7 +10,7 @@
 				</div>
 				<div class="card-body">
 				<?php
-					$query = "SELECT * FROM services WHERE status != 6";
+					$query = "SELECT * FROM services WHERE status IN (0,1,2,3,4,5)";
 					$run = mysqli_query($conn, $query);
 					$open = mysqli_num_rows($run);
 					echo "<h5 class='card-title'><span class='badge badge-info'>{$open}</span> Open Services</h5><hr class='my-1'>\n";
@@ -18,7 +18,7 @@
 						echo "<p class='card-text'>There are <b>no</b> open service tickets! Click <a href='create-service.php'>here</a> to open a new ticket.</p>";
 
 					}
-					$query = "SELECT s.*, u.fname, u.lname FROM services as s, users as u WHERE s.status != 6 AND u.userid = s.customer";
+					$query = "SELECT s.*, u.fname, u.lname FROM services as s, users as u WHERE s.status IN (0,1,2,3,4,5) AND u.userid = s.customer";
 					$run = mysqli_query($conn, $query);
 
 					$table = "<div class='container'> 

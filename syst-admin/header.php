@@ -26,6 +26,7 @@
 				<li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
 				<li class="nav-item"><a href="users.php" class="nav-link">Users</a></li>
 				<li class="nav-item"><a href="services.php" class="nav-link">Services</a></li>
+				<li class="nav-item"><a href="rigging.php" class="nav-link">Rigging</a></li>
 			</ul>
 		</div>
 	</nav>

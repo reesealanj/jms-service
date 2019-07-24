@@ -21,7 +21,7 @@
 				</div>
 				<div class="card-body">
 				<?php
-					$query = "SELECT * FROM services WHERE status != 6";
+					$query = "SELECT * FROM services WHERE status IN (0,1,2,3,4,5)";
 					$run = mysqli_query($conn, $query);
 					$open = mysqli_num_rows($run);
 					echo "<h5 class='card-title'><span class='badge badge-info'>{$open}</span> Open Services</h5><hr class='my-1'>\n";
@@ -29,7 +29,7 @@
 						echo "<p class='card-text'>There are <b>no</b> open service tickets! Click <a href='create-service.php'>here</a> to open a new ticket.</p>";
 
 					}
-					$query = "SELECT s.*, u.fname, u.lname FROM services as s, users as u WHERE s.status != 6 AND u.userid = s.customer";
+					$query = "SELECT s.*, u.fname, u.lname FROM services as s, users as u WHERE s.status IN (0,1,2,3,4,5) AND u.userid = s.customer";
 					$run = mysqli_query($conn, $query);
 
 					$table = "<div class='container'> 
@@ -86,6 +86,72 @@
 								<td>" . $start . "</td>
 								<td>";
 									$table .= "<a class='btn btn-primary btn-sm mx-1 my-1' href='view-service.php?id=" . $serviceid . "' role='button'>View </a>
+								</td>
+							</tr>\n
+							";
+						}
+						$table .= "</tbody></table></div></div>";
+						echo $table;
+				?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-12">
+			<div class="card mt-4">
+				<div class="card-header">
+						Current Rigging Requests
+				</div>
+				<div class="card-body">
+				<?php
+					$query = "SELECT * FROM services WHERE status=7";
+					$run = mysqli_query($conn, $query);
+					$open = mysqli_num_rows($run);
+					echo "<h5 class='card-title'><span class='badge badge-info'>{$open}</span> Open Rigging Requests</h5><hr class='my-1'>\n";
+					if($open == 0){
+						echo "<p class='card-text'>There are <b>no</b> open rigging tickets! Click <a href='create-rigging.php'>here</a> to open a new ticket.</p>";
+
+					}
+					$query = "SELECT s.*, u.fname, u.lname FROM services as s, users as u WHERE s.status=7 AND u.userid = s.customer";
+					$run = mysqli_query($conn, $query);
+
+					$table = "<div class='container'> 
+												<div class='table-responsive'>
+												<table class='table table-hover'>
+												<caption>Displaying " . $open . " Tickets.</caption>
+													<thead>
+														<tr>
+															<th>Request ID</th>
+															<th>Customer Name</th>
+															<th>Ticket Status</th>
+															<th>Start Date</th>
+															<th>Actions</th>
+														</tr>
+													</thead>
+												<tbody>";
+					while ($row = mysqli_fetch_assoc($run)) {
+							$cust_fname = $row['fname'];
+							$cust_lname = $row['lname'];
+							$serviceid = $row['serviceid'];
+							$status_num = $row['status'];
+							$start = $row['recieved'];
+							$finish = $row['completed'];
+
+							$status_word = "";
+
+							if($status_num == 7){
+								$status_word = "Rigging Request Opened";
+							}
+						
+							$table .= "
+							<tr>
+								<td>" . $serviceid . "</td>
+								<td>".$cust_fname." " .$cust_lname."</td>
+								<td>" . $status_word . "</td>
+								<td>" . $start . "</td>
+								<td>";
+									$table .= "<a class='btn btn-primary btn-sm mx-1 my-1' href='view-rigging.php?id=" . $serviceid . "' role='button'>View </a>
 								</td>
 							</tr>\n
 							";
