@@ -95,6 +95,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "syst-admin/update-service.php",
+			"settings":
+			{
+				"buffer_size": 3668,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -145,28 +153,12 @@
 	},
 	"expanded_folders":
 	[
-		"/D/xampp/htdocs/service-system"
 	],
 	"file_history":
 	[
-		"/D/xampp/htdocs/service-system/customer/view-service.php",
-		"/D/xampp/htdocs/service-system/sales/view-service.php",
-		"/D/xampp/htdocs/service-system/service/view-service.php",
-		"/D/xampp/htdocs/service-system/includes/login.inc.php",
-		"/D/xampp/htdocs/service-system/customer/services.php",
-		"/D/xampp/htdocs/service-system/syst-admin/view-service.php",
-		"/D/xampp/htdocs/service-system/syst-admin/update-service.php",
-		"/D/xampp/htdocs/service-system/customer/view-boat.php",
-		"/D/xampp/htdocs/service-system/customer/view-motor.php",
-		"/D/xampp/htdocs/service-system/customer/view-trailer.php",
-		"/D/xampp/htdocs/service-system/customer/profile.php",
-		"/D/xampp/htdocs/service-system/customer/index.php",
-		"/D/xampp/htdocs/service-system/syst-admin/create-service.php",
-		"/D/xampp/htdocs/service-system/customer/header.php",
-		"/D/xampp/htdocs/service-system/customer/footer.php",
-		"/D/xampp/htdocs/service-system/includes/register.inc.php",
-		"/D/xampp/htdocs/service-system/syst-admin/newuser.php",
+		"/Users/reese/Projects/jms-service/includes/forgot.inc.php",
 		"/D/xampp/htdocs/service-system/includes/forgot.inc.php",
+		"/D/xampp/htdocs/service-system/syst-admin/create-service.php",
 		"/D/xampp/htdocs/service-system/syst-admin/index.php",
 		"/D/xampp/htdocs/service-system/syst-admin/header.php",
 		"/D/xampp/htdocs/service-system/syst-admin/part-items.php",
@@ -174,8 +166,10 @@
 		"/D/xampp/htdocs/service-system/syst-admin/service-items.php",
 		"/D/xampp/htdocs/service-system/syst-admin/service-history.php",
 		"/D/xampp/htdocs/service-system/syst-admin/add-service.php",
+		"/D/xampp/htdocs/service-system/syst-admin/view-service.php",
 		"/D/xampp/htdocs/service-system/syst-admin/help.php",
 		"/D/xampp/htdocs/service-system/syst-admin/remove-line-item.php",
+		"/D/xampp/htdocs/service-system/syst-admin/update-service.php",
 		"/D/xampp/htdocs/service-system/syst-admin/edit-service.php",
 		"/D/xampp/htdocs/service-system/syst-admin/footer.php",
 		"/D/xampp/htdocs/service-system/syst-admin/add-trailer.php",
@@ -191,8 +185,11 @@
 		"/D/xampp/htdocs/service-system/syst-admin/users.php",
 		"/D/xampp/htdocs/service-system/syst-admin/test.php",
 		"/D/xampp/htdocs/service-system/syst-admin/edit-user.php",
+		"/D/xampp/htdocs/service-system/syst-admin/newuser.php",
 		"/D/xampp/htdocs/service-system/syst-admin/delete-submit.php",
 		"/D/xampp/htdocs/service-system/syst-admin/remove-user.php",
+		"/D/xampp/htdocs/service-system/includes/login.inc.php",
+		"/D/xampp/htdocs/service-system/includes/register.inc.php",
 		"/D/xampp/htdocs/service-system/register.inc.php",
 		"/C/Users/reese/personal-projects/rjones.dev/public_html/index.html",
 		"/D/xampp/htdocs/rjones.dev/index.html",
@@ -276,11 +273,21 @@
 		"/D/xampp/htdocs/banwebpp/includes/stu-log.inc.php",
 		"/D/xampp/htdocs/banwebpp/index.php",
 		"/C/Users/reese/Desktop/loginsystem/header.php",
-		"/C/Users/reese/Desktop/loginsystem/index.php"
+		"/C/Users/reese/Desktop/loginsystem/index.php",
+		"/C/Users/reese/Desktop/loginsystem/signup.php",
+		"/C/Users/reese/Desktop/loginsystem/style.css",
+		"/D/xampp/htdocs/index.php",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/css/main.css",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/index.php",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/reesealanj_store_schema.sql",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/index.html",
+		"/C/Users/reese/SophomoreSpring/CS2541/hw5-reesealanj/README.md",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/tke/52539bfbb16f2372ff8d6a94c3f28bc70c575650/updates/index.html",
+		"/C/Users/reese/personal-projects/reesealanj.github.io/_layouts/about.html"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 41.0
 	},
 	"find_in_files":
 	{
@@ -294,12 +301,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"?>",
-			"$_GET['id']",
-			"$_GET['id'",
-			"$_GET['id']",
-			"?>",
-			"6",
+			"service",
 			"lines_row",
 			"\"",
 			"\"\"",
@@ -323,14 +325,44 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "syst-admin/update-service.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1526,
+								1526
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -367,7 +399,7 @@
 	"project": "service-system.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -405,7 +437,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 232.0,
+	"side_bar_width": 240.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
